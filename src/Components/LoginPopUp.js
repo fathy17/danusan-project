@@ -13,6 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux'
 import { signIn } from '../Store/Actions/authAction'
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
 
 function Copyright() {
   return (
@@ -29,10 +33,15 @@ function Copyright() {
 
 class LoginPopUp extends Component {
   state = {
+    showPassword: false,
     open: false,
-    email:'',
-    password:''
+    email: '',
+    password: ''
   }
+
+  handleClickShowPassword = () => {
+    this.setState({ ...this.state, showPassword: !this.state.showPassword });
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -53,6 +62,10 @@ class LoginPopUp extends Component {
     this.props.signIn(this.state)
   }
 
+  handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <Fragment>
@@ -65,11 +78,11 @@ class LoginPopUp extends Component {
         <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
           <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div style={{display:'flex', flexDirection:'column', marginTop:'30px', alignItems:'center'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', marginTop: '30px', alignItems: 'center' }}>
               <Avatar >
                 <LockOutlinedIcon />
               </Avatar>
-              <Typography component="h1" variant="h5" style={{margin:'20px 0'}}>
+              <Typography component="h1" variant="h5" style={{ margin: '20px 0' }}>
                 Masuk
         </Typography>
               <form noValidate onSubmit={this.handleSubmit}>
@@ -92,15 +105,28 @@ class LoginPopUp extends Component {
                   fullWidth
                   name="password"
                   label="Password"
-                  type="password"
+                  type={this.state.showPassword ? 'text' : 'password'}
                   id="password"
                   autoComplete="current-password"
                   onChange={this.handleChange}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={this.handleClickShowPassword}
+                          onMouseDown={this.handleMouseDownPassword}
+                        >
+                          {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
                 />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
+                 <FormControlLabel
+                    control={<Checkbox value="remember" color="primary" />}
+                    label="Remember me"
+                  />
                 <Button
                   type="submit"
                   fullWidth

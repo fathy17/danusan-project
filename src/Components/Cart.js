@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import Button from '@material-ui/core/Button';
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
-import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
-import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
+import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
+import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline'
 import { connect } from 'react-redux'
 import { Typography, Grid, Paper, Container, DialogTitle, DialogActions, AppBar, Toolbar } from '@material-ui/core';
 import { removeItem, addQuantity, subtractQuantity } from '../Store/Actions/cartAction'
@@ -47,7 +47,7 @@ class Cart extends Component {
                             <Grid item xs={12}>
                                 <Paper style={{ background: '#efdb86' }}>
                                     <Grid container spacing={3} style={{ margin: '10px', width: '100%' }}>
-                                        <Grid item xs ={12} md={3} style={{textAlign:'center'}}>
+                                        <Grid item xs={12} md={3} style={{ textAlign: 'center' }}>
                                             <img
                                                 src={addedItem.img}
                                                 alt={addedItem.title}
@@ -57,14 +57,14 @@ class Cart extends Component {
                                             <div className="item-desc">
                                                 <Typography>{addedItem.title}</Typography>
                                                 <Typography>{addedItem.desc}</Typography>
-                                                <Typography style={{fontWeight:'500'}}>Harga: Rp. {addedItem.price}</Typography>
-                                                <div style={{display: 'flex', marginTop:'10px', marginRight: '10px', justifyContent:'space-between'}}>
-                                                    <div style={{ display: 'flex'}}>
-                                                        <Button onClick={() => { this.handleAddQuantity(addedItem.id) }}><ArrowDropUp /></Button>
-                                                        <Typography style={{fontSize:'1.1rem',fontWeight:'500'}}>
+                                                <Typography style={{ fontWeight: '500' }}>Harga: Rp. {addedItem.price}</Typography>
+                                                <div style={{ display: 'flex', marginTop: '10px', marginRight: '10px', justifyContent: 'space-between' }}>
+                                                    <div style={{ display: 'flex', alignItems:'center' }}>
+                                                        <Button onClick={() => { this.handleSubtractQuantity(addedItem.id) }}><RemoveCircleOutline /></Button>
+                                                        <Typography style={{ fontSize: '1.1rem', fontWeight: '500' }}>
                                                             {addedItem.quantity}
                                                         </Typography>
-                                                        <Button onClick={() => { this.handleSubtractQuantity(addedItem.id) }}><ArrowDropDown /></Button>
+                                                        <Button onClick={() => { this.handleAddQuantity(addedItem.id) }}><AddCircleOutline /></Button>
                                                     </div>
                                                     <Button style={{ background: '#f12c53', color: 'white' }} onClick={() => { this.handleRemove(addedItem.id) }}>Hapus</Button>
                                                 </div>
@@ -105,13 +105,13 @@ class Cart extends Component {
                             {addedItems}
                         </Grid>
                     </Container>
-                    <AppBar position='fixed' style={{position:'absolute', background: '#f12c53', color: 'white', paddingRight:'0' }}>
+                    <AppBar position='fixed' style={{ position: 'absolute', background: '#f12c53', color: 'white', paddingRight: '0' }}>
                         <Toolbar style={{ justifyContent: 'center' }}>
                             <Typography >Keranjang Belanja</Typography>
                         </Toolbar>
                     </AppBar>
                     <DialogActions>
-                        <Typography style={{fontWeight:'500'}}>Total Harga: Rp. {this.props.total}</Typography>
+                        <Typography style={{ fontWeight: '500' }}>Total Harga: Rp. {this.props.total}</Typography>
                         <Button style={{ background: '#f12c53', color: 'white' }}>Lanjut Beli</Button>
                     </DialogActions>
                 </Dialog>

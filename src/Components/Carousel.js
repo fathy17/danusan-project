@@ -33,7 +33,7 @@ const Carousel = () => {
                     <Typography variant='h5'>"Deskripsi Tulis Sini"</Typography>
                     <br/>
                     <br/>
-                    <Button variant='contained' style={{background:'#f12c53', color:'white'}}>Lihat Produk</Button>
+                    <Button href="#produk" target="_parent" variant='contained' style={{background:'#f12c53', color:'white'}}>Lihat Produk</Button>
                     <br/>
                     <KeyboardArrowDown style={{fontSize:'50px', color:'#f12c53'}}/>
                 </div>

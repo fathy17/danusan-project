@@ -11,8 +11,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import Cart from './Cart';
+import { connect } from 'react-redux'
 
 const drawerWidth = 240;
 
@@ -49,7 +50,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ProfileUser(props) {
+  const ProfileUser= (props) => {
+  const { auth } = props
   const { container } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -67,6 +69,8 @@ function ProfileUser(props) {
       </List>
     </div>
   );
+
+  if (!auth.uid) return <Redirect to='/' />
 
   return (
     <div className={classes.root}>
@@ -127,5 +131,11 @@ function ProfileUser(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
 
-export default ProfileUser;
+
+export default connect(mapStateToProps)(ProfileUser)
