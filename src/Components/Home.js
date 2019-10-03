@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Carousel from './Carousel';
-import ListItem from './ListItem';
+import ListItem from '../ListItem';
 import Footer from './Footer.';
 import NavbarLogin from './NavbarLogin';
 import Navbar from './NavBar';
