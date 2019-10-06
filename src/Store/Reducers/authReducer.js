@@ -8,7 +8,7 @@ const initState = {
         console.log('login error');
         return {
           ...state,
-          authError: 'Login failed'
+          authError: 'Terjadi kesalahan, periksa email atau kata sandi.'
         }
   
       case 'LOGIN_SUCCESS':

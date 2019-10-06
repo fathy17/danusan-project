@@ -18,6 +18,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -65,6 +66,7 @@ class LoginPopUp extends Component {
   handleMouseDownPassword = event => {
     event.preventDefault();
   };
+
 
   render() {
     return (
@@ -123,20 +125,21 @@ class LoginPopUp extends Component {
                     )
                   }}
                 />
-                 <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                  />
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Remember me"
+                />
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   color="primary"
-
+                  onClick={this.handleClickOpenBar}
                 >
                   Masuk
-          </Button>
+                </Button>
               </form>
+              <Typography style={{color:'red'}}>{this.props.authError}</Typography>
             </div>
             <Box mt={8}>
               <Copyright />
@@ -148,12 +151,18 @@ class LoginPopUp extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signIn: (creds) => dispatch(signIn(creds))
   }
 }
 
-export default connect(null, mapDispatchToProps)(LoginPopUp)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPopUp)
 
 

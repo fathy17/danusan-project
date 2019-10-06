@@ -7,7 +7,7 @@ var firebaseConfig = {
     authDomain: "danusan-project.firebaseapp.com",
     databaseURL: "https://danusan-project.firebaseio.com",
     projectId: "danusan-project",
-    storageBucket: "",
+    storageBucket: "danusan-project.appspot.com",
     messagingSenderId: "329447380225",
     appId: "1:329447380225:web:df2d5c582f01f7863d3700"
   };

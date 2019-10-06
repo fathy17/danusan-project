@@ -15,6 +15,7 @@ import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import { signOut } from '../Store/Actions/authAction'
 
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -72,7 +73,7 @@ function NavbarLogin(props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <Link to='/profile' style={{ textDecoration: 'none', color: 'black' }}><MenuItem ><ListItemIcon><AccountCircle /></ListItemIcon>Profile</MenuItem></Link>
+            <Link to={'/profile/'+ props.auth.uid} style={{ textDecoration: 'none', color: 'black' }}><MenuItem ><ListItemIcon><AccountCircle /></ListItemIcon>Profile</MenuItem></Link>
             <MenuItem onClick={props.signOut}><ListItemIcon><Close /></ListItemIcon>Logout</MenuItem>
         </Menu>
 
