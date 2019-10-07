@@ -66,9 +66,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+    // console.log(state)
     return {
+        items1: state.firestore.ordered.items,
         items: state.cart.items
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListItem)

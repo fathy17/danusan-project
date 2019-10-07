@@ -10,21 +10,21 @@ import { compose } from 'redux'
 
 
 const Home = (props) => {
-    const { auth } = props
+    const { auth, items } = props
     const links = auth.uid ? <NavbarLogin /> : <Navbar />
     return (
         <Fragment>
             { links }
             <Carousel />
-            <ListItem />
+            <ListItem items={items}/>
             <Footer />
         </Fragment>
     )
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
+        items: state.firestore.ordered.items,
         auth: state.firebase.auth
     }
 }
