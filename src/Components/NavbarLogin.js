@@ -85,7 +85,7 @@ function NavbarLogin(props) {
                 <AppBar position="fixed" style={{ background: '#f12c53' }}>
                     <Toolbar>
                         <Typography variant="h6" className={classes.title} >
-                            Logo Danusan
+                            Danusan
                     </Typography>
                         <div className={classes.grow} />
                         <div>

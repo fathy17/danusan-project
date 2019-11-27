@@ -51,7 +51,7 @@ export default function Navbar(props) {
                 <AppBar position="fixed" style={{ background: '#f12c53' }}>
                     <Toolbar>
                         <Link to="/" style={{ textDecoration: 'none', color: "white" }}><Typography variant="h6" className={classes.title} >
-                            Logo Danusan
+                            Danusan
                     </Typography></Link>
                         <div className={classes.grow} />
                         <div>
